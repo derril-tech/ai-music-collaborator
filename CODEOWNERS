@@ -1,0 +1,39 @@
+# Global owners
+* @pm @tech-lead
+
+# Frontend
+/frontend/ @fe-team
+/frontend/src/ @fe-team
+/frontend/public/ @fe-team
+
+# Backend API
+/api/ @be-team
+/api/src/ @be-team
+/api/migrations/ @be-team
+
+# Workers & ML
+/workers/ @mle-team
+/workers/src/ @mle-team
+/workers/models/ @mle-team
+
+# Infrastructure
+/infra/ @sre-team
+/infra/terraform/ @sre-team
+/infra/docker/ @sre-team
+/infra/kubernetes/ @sre-team
+
+# Documentation
+/docs/ @pm @tech-lead
+*.md @pm @tech-lead
+
+# Configuration files
+package.json @tech-lead
+turbo.json @tech-lead
+docker-compose*.yml @sre-team
+.github/ @sre-team
+
+# Security & secrets
+.env* @sre-team
+secrets/ @sre-team
+*.key @sre-team
+*.pem @sre-team

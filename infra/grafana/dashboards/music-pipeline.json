@@ -1,0 +1,369 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "AI Music Collaborator - Pipeline Dashboard",
+    "tags": ["music", "ai", "pipeline"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Generation Pipeline Performance",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(melody_generation_time_sum[5m]) / rate(melody_generation_time_count[5m])",
+            "legendFormat": "Melody Generation (s)"
+          },
+          {
+            "expr": "rate(harmony_generation_time_sum[5m]) / rate(harmony_generation_time_count[5m])",
+            "legendFormat": "Harmony Generation (s)"
+          },
+          {
+            "expr": "rate(rhythm_generation_time_sum[5m]) / rate(rhythm_generation_time_count[5m])",
+            "legendFormat": "Rhythm Generation (s)"
+          },
+          {
+            "expr": "rate(arrangement_time_sum[5m]) / rate(arrangement_time_count[5m])",
+            "legendFormat": "Arrangement (s)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "Audio Processing Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(synthesis_time_sum[5m]) / rate(synthesis_time_count[5m])",
+            "legendFormat": "Synthesis (s)"
+          },
+          {
+            "expr": "rate(mix_master_time_sum[5m]) / rate(mix_master_time_count[5m])",
+            "legendFormat": "Mix/Master (s)"
+          },
+          {
+            "expr": "rate(qa_validation_time_sum[5m]) / rate(qa_validation_time_count[5m])",
+            "legendFormat": "QA Validation (s)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 120
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "Audio Quality Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "lufs_deviation",
+            "legendFormat": "LUFS Deviation"
+          },
+          {
+            "expr": "true_peak_margin",
+            "legendFormat": "True Peak Margin"
+          },
+          {
+            "expr": "key_stability",
+            "legendFormat": "Key Stability"
+          },
+          {
+            "expr": "timing_drift",
+            "legendFormat": "Timing Drift (ms)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 4,
+        "title": "Request Rate & Error Rate",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(request_duration_count[5m])",
+            "legendFormat": "Requests/sec"
+          },
+          {
+            "expr": "rate(error_rate[5m])",
+            "legendFormat": "Errors/sec"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "vis": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "reqps"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 5,
+        "title": "Export Performance",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "rate(export_time_sum[5m]) / rate(export_time_count[5m])",
+            "legendFormat": "Export Time (s)"
+          },
+          {
+            "expr": "rate(export_size_sum[5m]) / rate(export_size_count[5m])",
+            "legendFormat": "Export Size (MB)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 300
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "System Health",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "active_connections",
+            "legendFormat": "Active Connections"
+          },
+          {
+            "expr": "up{job=\"ai-music-collaborator-api\"}",
+            "legendFormat": "API Health"
+          },
+          {
+            "expr": "up{job=\"ai-music-collaborator-workers\"}",
+            "legendFormat": "Workers Health"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list"
+            },
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "templating": {
+      "list": []
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 0,
+    "links": [],
+    "gnetId": null
+  }
+}
