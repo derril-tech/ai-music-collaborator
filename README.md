@@ -172,4 +172,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Built with ❤️ by the AI Music Collaborator team
+Built with ❤️ by **Derril Filemon** for the AI Music Collaborator team
